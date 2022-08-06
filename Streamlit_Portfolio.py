@@ -8,28 +8,34 @@ from itertools import cycle
 from pandas_datareader import data as pdr
 import datetime
 import streamlit as st
+
 import time
 
 yf.pdr_override()
 
 
 st.set_page_config(page_title="Portfolio Analysis", page_icon="AppResources/ICON.png", layout="wide", initial_sidebar_state="auto", menu_items=None)
+
+
 st.header("PORTFOLIO ANALYSIS")
+st.write("Made with ❤️ by *Devarsh Shah*")
 with open('style.css') as fa:
     st.markdown(f'<style>{fa.read()}</style>',unsafe_allow_html=True)
 
-tab1, tab2, tab3= st.tabs(["🗃 Stocks' Data","📈 DashBoard","📑Tutorial"])
+tab1, tab2, tab3, tab4= st.tabs(["🗃 Stocks' Data","📈 DashBoard","📑Tutorial", "🙂About Developer"])
 
 tab1.subheader("My Stocks")
 tab3.subheader("Coming Soon")
+tab4.write("If you are impressed or inspired a bit then you could consider [Buying me a Coffee](https://www.buymeacoffee.com/devarsh)")
+tab4.write("Let's Connect On [LinkedIn](https://www.linkedin.com/in/devarsh-shah-256115194/)")
 
-with open("AppResources/Demo_File.xlsx","rb") as file:
-     btn = tab1.download_button(
-             label="Demo_Excel_File.xlsx",
-             data=file,
-             file_name="Demo_File.xlsx",
-             mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
-           )
+with open("AppResources/Demo_Excel_File.xlsx","rb") as file:
+    btn = tab1.download_button(
+            label="Demo_Excel_File.xlsx",
+            data=file,
+            file_name="Demo_Excel_File.xlsx",
+            mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+        )
 
 tab2.subheader("🖥️My Dashboard")
 
@@ -51,7 +57,7 @@ else:
     sheet = pd.read_excel(sheet_file)
     tab1.success("Your Dashboard is loading in the 'Dashboard' section.")
     
-   
+
 tab1.table(sheet)
 #StockIndex = int(input("Enter the SR no according to the excel file for individual Stocks: ")) -1
 # GraphFileName = UserName+"Graph.png"
@@ -114,7 +120,7 @@ def PlotPortfolioValues(datalist1,GraphFileName=None,compare=None):
     Date_wise_Total=Date_wise_Total.reset_index()
     #Date_wise_Total
     drawGraph(list(Date_wise_Total.Date),list(Date_wise_Total.Value),compare=compare,text="Portfolio Value over Time",showInvest='yes',GraphFileName=GraphFileName)
-      
+    
 
 
 # In[57]:
@@ -174,21 +180,21 @@ def drawGraph(x,y,text,showInvest = None,GraphFileName=None,compare=None):
             rangeselector=dict(
                 buttons=list([
                     dict(count=1,
-                         label="1m",
-                         step="month",
-                         stepmode="backward"),
+                        label="1m",
+                        step="month",
+                        stepmode="backward"),
                     dict(count=6,
-                         label="6m",
-                         step="month",
-                         stepmode="backward"),
+                        label="6m",
+                        step="month",
+                        stepmode="backward"),
                     dict(count=1,
-                         label="YTD",
-                         step="year",
-                         stepmode="todate"),
+                        label="YTD",
+                        step="year",
+                        stepmode="todate"),
                     dict(count=1,
-                         label="1y",
-                         step="year",
-                         stepmode="backward"),
+                        label="1y",
+                        step="year",
+                        stepmode="backward"),
                     dict(step="all")
                 ])
             ),
@@ -202,6 +208,8 @@ def drawGraph(x,y,text,showInvest = None,GraphFileName=None,compare=None):
     if showInvest == 'yes':
         names = cycle(['Value', 'Invested','Sensex'])
         fig2.for_each_trace(lambda t:  t.update(name = next(names)))
+    
+    fig2.update_layout(height=750) 
         
     # if GraphFileName:
     #     fig2.write_image("Users/"+UserName+"/images/"+GraphFileName)
@@ -304,8 +312,28 @@ col2.metric("Total Invested", f"Rs.{MultipliedInvested.iloc[-1,-1]: ,.0f}","💰
 col3.metric("Outperform Sensex by",f"Rs.{nifdifvalue: ,.0f}",delta=f"{nifdif: ,.2f}% 😎")
 col4.metric("The Peak", f"Rs.{PortMax: ,.0f}",delta=f"{PortMaxPer: ,.2f}% 🥲")
 
+peak_string = f"Your Portfolio had achieved All Time high of Rs. {PortMax: ,.0f} but now it's down by {PortMaxPer: ,.2f}% 🥲"
 
-
+if GainPer>0 and nifdif>0: 
+    with tab2.expander("Your Portfolio Analysis"):
+        st.write(f"Your Portfolio is Profitable! i.e. Rs. {Gain: ,.0f} in profit💸")
+        st.write(f"You would have Rs. {nifdifvalue:,.0f} less, if you had Invested this amount in same periodic manner in Indian Benchmark(Sensex) 😇")
+        st.write(peak_string)
+elif GainPer>0 and nifdif<0:
+    with tab2.expander("Your Portfolio Analysis"):
+        st.write(f"Your Portfolio is Profitable! i.e. Rs. {Gain: ,.0f} in profit💸")
+        st.write(f"You would have Rs. {abs(nifdifvalue):,.0f} more, if you had Invested this amount in same periodic manner in Indian Benchmark(Sensex) 🥲")
+        st.write(peak_string)
+elif GainPer<0 and nifdif<0:
+    with tab2.expander("Your Portfolio Analysis"):
+        st.write(f"Your Portfolio is not Profitable! i.e. Rs. {abs(Gain): ,.0f} in loss💸")
+        st.write(f"You would have Rs. {abs(nifdifvalue):,.0f} more, if you had Invested this amount in same periodic manner in Indian Benchmark(Sensex) 🥲")
+        st.write(peak_string)
+else:
+    with tab2.expander("Your Portfolio Analysis"):
+        st.write(f"Your Portfolio is not Profitable! i.e. Rs. {abs(Gain): ,.0f} in loss💸")
+        st.write(f"You would have Rs. {abs(nifdifvalue):,.0f} less,if you had Invested the same amount in the same periodic manner in Indian Benchmark(Sensex) 😇")
+        st.write(peak_string)
 
 tab2.plotly_chart(fig2,use_container_width=True)
 
