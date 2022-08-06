@@ -49,7 +49,7 @@ tab2.subheader("🖥️My Dashboard")
 #     os.mkdir("Users/"+UserName +"/images")
 # if not os.path.exists("Users/"+UserName+"/resources"):
 #     os.mkdir("Users/"+UserName+"/resources")
-sheet_file = tab1.file_uploader("Upload your excel file : (Download the 'Demo_Excel_File.xlsx' given above then update it and upload this file in below dropbox)",accept_multiple_files=False)
+sheet_file = tab1.file_uploader("Upload your excel file : (Download the 'Demo_Excel_File.xlsx' given above then update it and upload that file in below dropbox)",accept_multiple_files=False)
 
 if not sheet_file:
     st.stop()
