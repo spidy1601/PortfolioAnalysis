@@ -26,8 +26,8 @@ tab1, tab2, tab3, tab4= st.tabs(["🗃 Stocks' Data","📈 DashBoard","📑Tutor
 
 tab1.subheader("My Stocks")
 tab3.subheader("Coming Soon")
-tab4.write("If you are impressed or inspired a bit then you could consider [Buying me a Coffee](https://www.buymeacoffee.com/devarsh)")
-tab4.write("Let's Connect On [LinkedIn](https://www.linkedin.com/in/devarsh-shah-256115194/)")
+tab4.write("Consider [buying me a coffee](https://www.buymeacoffee.com/devarsh) if you feel somewhat motivated or impressed.")
+tab4.write("Let's Connect On [LinkedIn](https://www.linkedin.com/in/devarsh-shah-256115194/)!")
 
 with open("AppResources/Demo_Excel_File.xlsx","rb") as file:
     btn = tab1.download_button(
