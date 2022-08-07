@@ -25,12 +25,15 @@ with open('style.css') as fa:
 tab1, tab2, tab3, tab4= st.tabs(["🗃 Stocks' Data","📈 DashBoard","📑Tutorial", "🙂About Developer"])
 
 tab1.subheader("My Stocks")
-tab3.subheader("Coming Soon")
+tab3.subheader("Why and How to Use?")
+tab3.markdown("##### [Why]<br><br>If your answer is YES to any of the below questions, then you must try this FREE website(Your data is secured and we don’t have access to it, so feel free to use it!)<br><ul><li>Want to see your Portfolio’s value on Particular date?</li><li>Want to compare Sensex and your Portfolio’s return(i.e if you had invested in the Index fund instead of your Portfolio)?</li><li>Want to know The highest Value your Portfolio had achieved?</li><li>Want to see the pattern of Portfolio’s value vs Time Period?</li></ul>",unsafe_allow_html=True)
+tab3.write("##### [How?]")
+tab3.video("https://youtu.be/rOBQBUTE3_w")
+
 tab4.write("Consider [buying me a coffee](https://www.buymeacoffee.com/devarsh) if you feel somewhat motivated or impressed.")
 tab4.write("Let's Connect On [LinkedIn](https://www.linkedin.com/in/devarsh-shah-256115194/)!")
-imggg=tab4.image("AppResources/Devarsh.jpg",width=300)
-tab4.write("Hello friend, I am Devarsh Shah creator of this WEBAPP. I'm in my final year of Computer Engineering course and doing side projects out of curiosity. Also I am looking for a good Internship(Ping me on my Linked In).")
-
+tab4.image("AppResources/Devarsh.jpg",width=300)
+tab4.write("Hello friend, I am Devarsh Shah, the creator of this WEBAPP. I'm in my final year of a computer engineering degree and doing side projects out of curiosity. Also, I am looking for a good internship (ping me on my linkedin).")
 
 with open("AppResources/Demo_Excel_File.xlsx","rb") as file:
     btn = tab1.download_button(
