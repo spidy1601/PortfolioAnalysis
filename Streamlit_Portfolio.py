@@ -64,7 +64,7 @@ else:
     try:
         sheet = pd.read_excel(sheet_file)
     except:
-        st.error("Please upload the file in excel format")
+        st.error("Incorrect File Format! Please upload the file in excel format")
         st.stop()
     sheet = pd.read_excel(sheet_file)
     tab1.success("Your Dashboard is loading in the 'Dashboard' section.")
