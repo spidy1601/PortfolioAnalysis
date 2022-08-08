@@ -22,6 +22,7 @@ st.write("Made with ❤️ by *Devarsh Shah*")
 with open('style.css') as fa:
     st.markdown(f'<style>{fa.read()}</style>',unsafe_allow_html=True)
 
+st.info("It is software that aggregates real-time data and delivers comprehensive analysis on a basic dashboard interface.")
 tab1, tab2, tab3, tab4= st.tabs(["🗃 Stocks' Data","📈 DashBoard","📑Tutorial", "🙂About Developer"])
 
 tab1.subheader("My Stocks")
