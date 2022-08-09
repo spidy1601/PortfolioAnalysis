@@ -300,7 +300,11 @@ oldres['CURRENT_VALUE']=oldres["Quan"]*oldres["Close"]
 tom = datetime.date.today() + datetime.timedelta(days=1)
 tom=tom.strftime("%Y-%m-%d")
 EndDate = tom
-DataList,dataQuantity = PortfolioValue(sheet,EndDate)
+try:
+    DataList,dataQuantity = PortfolioValue(sheet,EndDate)
+except:
+    st.error("Make sure all your Entered details are correct.")
+    st.stop()
 PlotPortfolioValues(DataList,GraphFileName=None,compare=oldres) 
 
 nifdifvalue = Current_Value-oldres.iloc[-1,5]
