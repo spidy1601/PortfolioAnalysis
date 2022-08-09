@@ -27,7 +27,7 @@ tab1, tab2, tab3, tab4= st.tabs(["🗃 Stocks' Data","📈 DashBoard","📑Tutor
 
 tab1.subheader("My Stocks")
 tab3.subheader("Why and How to Use?")
-tab3.markdown("##### [Why]<br><br>If your answer is YES to any of the below questions, then you must try this FREE website(Your data is secured and we don’t have access to it, so feel free to use it!)<br><ul><li>Want to see your Portfolio’s value on Particular date?</li><li>Want to compare Sensex and your Portfolio’s return(i.e if you had invested in the Index fund instead of your Portfolio)?</li><li>Want to know The highest Value your Portfolio had achieved?</li><li>Want to see the pattern of Portfolio’s value vs Time Period?</li></ul>",unsafe_allow_html=True)
+tab3.markdown("##### [Why]<br>If your answer is YES to any of the below questions, then you must try this FREE website(Your data is secured and we don’t have access to it, so feel free to use it!)<br><ul><li>Want to see your Portfolio’s value on Particular date?</li><li>Want to compare Sensex and your Portfolio’s return(i.e if you had invested in the Index fund instead of your Portfolio)?</li><li>Want to know The highest Value your Portfolio had achieved?</li><li>Want to see the pattern of Portfolio’s value vs Time Period?</li></ul>",unsafe_allow_html=True)
 tab3.write("##### [How?]")
 tab3.video("https://youtu.be/cnDjfSu64bg")
 
