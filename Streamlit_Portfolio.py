@@ -59,17 +59,17 @@ tab2.subheader("🖥️My Dashboard")
 sheet_file = tab1.file_uploader("Upload your excel file : (Download the 'Demo_Excel_File.xlsx' given above then update it and upload that file in below dropbox)",accept_multiple_files=False)
 
 if not sheet_file:
-    st.stop()
+    default_sheet="Users/Spidyy/resources/Spidyy_data.xlsx"
+    tab2.success("This is the demo portfolio.")
+    sheet = pd.read_excel(default_sheet)
 else:
     try:
         sheet = pd.read_excel(sheet_file)
     except:
-        st.error("Incorrect File Format! Please upload the file in excel format")
+        st.error("Please upload the file in excel format")
         st.stop()
-    sheet = pd.read_excel(sheet_file)
     tab1.success("Your Dashboard is loading in the 'Dashboard' section.")
-    
-
+ 
 tab1.table(sheet)
 #StockIndex = int(input("Enter the SR no according to the excel file for individual Stocks: ")) -1
 # GraphFileName = UserName+"Graph.png"
