@@ -3,6 +3,19 @@
     border: 1px solid #a4c9c1;
     border-radius: 10px;
 }
+.st-dl {
+    border-radius: 0.25rem;
+    background-color: peachpuff;
+}
+.st-cf {
+    font-size: 18px;
+    font-family: initial;
+}
+/* .css-12w0qpk.e1tzin5v2 {
+    background-color: rgb(255 255 255);
+    border: 1px solid #a4c9c1;
+    border-radius: 10px;
+} */
 /* .css-1xarl3l {
     font-size: 2rem;
     padding-bottom: 0.25rem;
