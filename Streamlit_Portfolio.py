@@ -59,7 +59,7 @@ tab2.subheader("🖥️My Dashboard")
 sheet_file = tab1.file_uploader("Upload your excel file : (Download the 'Demo_Excel_File.xlsx' given above then update it and upload that file in below dropbox)",accept_multiple_files=False)
 
 if not sheet_file:
-    default_sheet="Users/Spidyy/resources/Spidyy_data.xlsx"
+    default_sheet="AppResources/Demo_Excel_File.xlsx"
     tab2.success("This analysis is for Demo_Excel_File.xlsx; You need to upload your excel to view your Portfolio Analysis")
     sheet = pd.read_excel(default_sheet)
 else:
