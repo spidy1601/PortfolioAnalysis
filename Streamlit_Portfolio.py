@@ -60,7 +60,7 @@ sheet_file = tab1.file_uploader("Upload your excel file : (Download the 'Demo_Ex
 
 if not sheet_file:
     default_sheet="Users/Spidyy/resources/Spidyy_data.xlsx"
-    tab2.success("This is the demo portfolio.")
+    tab2.success("This analysis is for Demo_Excel_File.xlsx; You need to upload your excel to view your Portfolio Analysis")
     sheet = pd.read_excel(default_sheet)
 else:
     try:
