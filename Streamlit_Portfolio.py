@@ -9,7 +9,7 @@ try:
     import openpyxl
     if openpyxl.__version__ < '3.1.0':
         print("Updating openpyxl...")
-        install('openpyxl --upgrade')
+        install('openpyxl')  # Install or upgrade openpyxl package
 except ImportError:
     print("Installing openpyxl...")
     install('openpyxl')
