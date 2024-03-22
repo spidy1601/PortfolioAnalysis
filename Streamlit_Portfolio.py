@@ -1,3 +1,19 @@
+import subprocess
+import sys
+
+def install(package):
+    subprocess.check_call([sys.executable, "-m", "pip", "install", package])
+
+# Check if 'openpyxl' is installed and whether it meets the required version
+try:
+    import openpyxl
+    if openpyxl.__version__ < '3.1.0':
+        print("Updating openpyxl...")
+        install('openpyxl --upgrade')
+except ImportError:
+    print("Installing openpyxl...")
+    install('openpyxl')
+
 from ast import Global
 import yfinance as yf #This is an API which fetch real time financial data 
 import pandas as pd 
@@ -5,6 +21,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import plotly.graph_objects as go #For Graphical representation
 from itertools import cycle
+
 from pandas_datareader import data as pdr
 import datetime
 import streamlit as st
